@@ -18,9 +18,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import os
 
-usernameStr = 'uxxxx'
-passwordStr = 'xxxxx'
-fileName = 'HORARIS - printed with <3'
+usernameStr = 'u126897'
+passwordStr = 'lamallola14'
+fileName = 'horaris'
 
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
@@ -34,7 +34,7 @@ delay = 3 # seconds
 
 # fill in username and hit the next button
 try:
-	os.system("rm ~/Desktop/horaris.pdf")
+	os.system("rm ~/Desktop/" + fileName + ".pdf")
 except:
 	pass
 
@@ -113,13 +113,18 @@ driver.switch_to.window(driver.window_handles[2])
 sleep(2)
 
 keyboard.press_and_release('enter')
+sleep(1)
 if platform.system() == 'Darwin':
     keyboard.press_and_release('cmd+d')
 elif platform.system() == 'Linux':
     keyboard.press_and_release('alt+d')
 elif platform.system() == 'Windows':
     keyboard.press_and_release('alt+d')
+sleep(1)
 keyboard.write(fileName)
+sleep(1)
 keyboard.press_and_release('enter')
 
+print("All done! Quitting...")
+driver.quit()
 # os.system("osascript ~/Scripts/Projects/horaris/applescript.scpt")
