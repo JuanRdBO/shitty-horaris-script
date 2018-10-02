@@ -124,7 +124,7 @@ if platform.system() == 'Darwin':
 elif platform.system() == 'Linux':
     keyboard.press_and_release('alt+d')
 elif platform.system() == 'Windows':
-    keyboard.press_and_release('cmd+d')
+    keyboard.press_and_release('alt+d')
 keyboard.write('HORARIS - printed with <3')
 keyboard.press_and_release('enter')
 
