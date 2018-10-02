@@ -18,21 +18,17 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import os
 
-usernameStr = 'uxxxxx'
-passwordStr = 'xxxxxx'
+usernameStr = 'uxxxx'
+passwordStr = 'xxxxx'
+fileName = 'HORARIS - printed with <3'
 
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument("--test-type")
 options.add_argument("--incognito")
 
-download_dir = "~/Desktop"
-profile = {"plugins.plugins_list": [{"enabled": False, "name": "Chrome PDF Viewer"}], # Disable Chrome's PDF Viewer
-               "download.default_directory": download_dir , "download.extensions_to_open": "applications/pdf"}
-options.add_experimental_option("prefs", profile)
-
-
-driver = webdriver.Chrome('/Users/juanruizdebustillo/Scripts/Projects/horaris/chromedriver', chrome_options=options)
+driver = webdriver.Chrome('/Users/juanruizdebustillo/Scripts/Projects/horaris/chromedriver')
+# Direct link to horaris 
 driver.get(('https://secretariavirtual.upf.edu/cosmos/Controlador/?apl=Uninavs&gu=a&idNav=identificacionCampus&aplDestino=PUBLI&NuevaSesionUsuario=true&idioma=ca&pais=ES&&NombreUsuarioAlumno=ALUMNO'))
 delay = 3 # seconds
 
@@ -51,7 +47,7 @@ try:
     signInButton.click()
     print ("Logged in!")
 except TimeoutException:
-    print( "Loading register page too much time!")
+    print( "Loading register page took too much time!")
 
 try:
     python_sign_in = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.CLASS_NAME, 'sigBtnFreeHref')))
@@ -73,7 +69,6 @@ try:
     action.perform()
 
     action.click()
-    #action.context_click()
     action.perform()
 
     print ("Calendar page is being loaded!")
@@ -106,7 +101,6 @@ try:
     action.perform()
 
     action.click()
-    #action.context_click()
     action.perform()
 
     print ("Calendar 'saving to pdf' page is ready!")
@@ -125,7 +119,7 @@ elif platform.system() == 'Linux':
     keyboard.press_and_release('alt+d')
 elif platform.system() == 'Windows':
     keyboard.press_and_release('alt+d')
-keyboard.write('HORARIS - printed with <3')
+keyboard.write(fileName)
 keyboard.press_and_release('enter')
 
 # os.system("osascript ~/Scripts/Projects/horaris/applescript.scpt")
