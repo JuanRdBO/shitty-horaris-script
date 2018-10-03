@@ -1,3 +1,4 @@
+#!/Users/juanruizdebustillo/anaconda3/bin/python
 # -*- coding: utf-8 -*-
 
 from selenium import webdriver
@@ -18,9 +19,10 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import os
 
-usernameStr = 'u126897'
-passwordStr = 'lamallola14'
+usernameStr = 'uxxxx'
+passwordStr = 'xxxxx'
 fileName = 'horaris'
+path = "~/Desktop/"
 
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
@@ -34,7 +36,7 @@ delay = 3 # seconds
 
 # fill in username and hit the next button
 try:
-	os.system("rm ~/Desktop/" + fileName + ".pdf")
+	os.system("rm " + path + fileName + ".pdf")
 except:
 	pass
 
@@ -83,7 +85,6 @@ try:
 except TimeoutException:
     print( "Calender page failed to load! :-(")
 
-driver.switch_to.window(driver.window_handles[0])    
 
 try:
     python_sign_in = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.ID, 'page-heading')))
@@ -96,7 +97,7 @@ try:
     action.perform()
 
     # Then, move the mouse
-    action.move_by_offset(-450,80)
+    action.move_by_offset(-440,80)
     action.pause(1)
     action.perform()
 
